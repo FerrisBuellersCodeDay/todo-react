@@ -1,6 +1,10 @@
-import React from "react";
-import './ActiveTask.css'
-const ActiveTask = (props) => {
+import React, { useState, useRef } from "react";
+import './Task.css'
+const Task = (props) => {
+
+  const [inputReadOnly, setInputReadonly] = useState("false");
+  const refInput = useRef(null);
+
     
   const deleteItemHandler = () => {
     props.deleteItem(props.id);
@@ -14,15 +18,21 @@ const ActiveTask = (props) => {
   const editItemHandler = () => {
     // props.editItem(props.id);
   };
+ /*
+  const onChangeHandler = (event) => {
+    this.setState({value: event.target.value})
+  };
+  */
 
   return (
-    <li className="active-task-item">
+    <li className="task-item">
       <input type="checkbox" onClick={checkItemHandler} />
-      <div>{props.text}</div>
+      <input ref={refInput} type ="text" defaultValue = {props.text} readonly={inputReadOnly}></input>
+
       <input type="button" value="Edit" onClick={editItemHandler} />
       <input type="button" value="Delete" onClick={deleteItemHandler} />
     </li>
   );
 };
 
-export default ActiveTask;
+export default Task;

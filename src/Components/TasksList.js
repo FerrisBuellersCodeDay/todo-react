@@ -1,11 +1,11 @@
 import React from "react";
-import ActiveTask from "./ActiveTask";
+import Task from "./Task";
 
-const ActiveTasksList = (props) => {
+const TasksList = (props) => {
   return (
     <ul>
       {props.items.map((task) => (
-        <ActiveTask
+        <Task
           id= {task.id}
           text={task.text}
           deleteItem={props.onDeleteItem}
@@ -17,4 +17,4 @@ const ActiveTasksList = (props) => {
   );
 };
 
-export default ActiveTasksList;
+export default TasksList;
