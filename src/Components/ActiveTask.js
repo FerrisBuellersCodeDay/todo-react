@@ -7,7 +7,7 @@ const ActiveTask = (props) => {
   };
 
   const checkItemHandler = (event) => {
-    //event.preventDefault();
+    event.preventDefault();
     props.checkItem(props.id);
   };
 
@@ -17,7 +17,7 @@ const ActiveTask = (props) => {
 
   return (
     <li className="active-task-item">
-      <input type="checkbox" onInput={checkItemHandler} />
+      <input type="checkbox" onClick={checkItemHandler} />
       <div>{props.text}</div>
       <input type="button" value="Edit" onClick={editItemHandler} />
       <input type="button" value="Delete" onClick={deleteItemHandler} />

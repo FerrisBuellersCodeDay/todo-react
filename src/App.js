@@ -55,7 +55,7 @@ function App() {
     );
   }
   if (doneTasks.length > 0) {
-    contentActive = (
+    contentDone = (
       <DoneTasksList
         items={doneTasks}
         onDeleteItem={deleteItemHandler}
