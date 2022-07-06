@@ -8,6 +8,7 @@ const TasksList = (props) => {
         <Task
           id= {task.id}
           text={task.text}
+          isActive={props.isActive}
           deleteItem={props.onDeleteItem}
           editItem={props.onEditItem}
           checkItem={props.onCheckItem}
