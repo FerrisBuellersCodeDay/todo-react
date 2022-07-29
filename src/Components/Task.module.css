@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+
+.task-li {
+  margin: 0rem;
+  margin-bottom: 0rem;
+  
+  padding: 0.05rem 0.05rem;
+  display: flex;
+  list-style-type: none;
+  position: relative;
+
+}
+
+.task {
+  border: 0;
+  background-color: transparent;
+  margin-right: 0.5rem;
+
+  width:25rem;
+  resize: none;
+
+  font-size: 1.3rem;
+  font-family: 'Neucha', cursive;
+  font-weight: 600;
+  line-height: 1.4em;
+
+  
+}
+
+.task-button{
+    margin:auto;
+    margin-left:0.1rem;
+    margin-right:0.1rem;
+    display: block;
+    height:1.5rem;
+    width:1.5rem;
+    font-size: 0.9rem;
+    border: 1px solid black;
+}
+.task-check{
+    margin:auto;
+    margin-left:0.1rem;
+    margin-right:0.5rem;
+    display: block;
+    height:1.5rem;
+    width:1.5rem;
+    border: 1px solid black;
+
+
+ 
+}
+.task-check:checked{
+
+
+
+  
+    filter: grayscale(100%);
+ 
+     
+}
+.task:focus {
+    outline: none; 
+    
+  }
+
+.done {
+    text-decoration: line-through;
+
+  }
+
+
+
+  

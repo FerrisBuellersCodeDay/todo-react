@@ -1,9 +1,9 @@
-.task-item {
-    margin: 1rem 0;
-    background: #dbdfaf;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    color: rgb(0, 0, 0);
-    padding: 1rem 2rem;
-    display: flex;
-  }
-  
+.task-list {
+  margin: 1rem 0;
+  background: transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  color: rgb(0, 0, 0);
+  padding: 1rem 2rem;
+  display: flex;
+  list-style-type: none;
+}

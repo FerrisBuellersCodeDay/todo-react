@@ -1,14 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./Task.css";
+import classes from  "./Task.module.css";
+import TextareaAutosize from 'react-textarea-autosize';
+
+
+
 const Task = (props) => {
   const [inputReadOnly, setInputReadonly] = useState("true");
   const [inputValue, setInputValue] = useState(""); //set
 
+
+
   useEffect(() => {
     setInputValue(props.text);
+    console.log(refInput.scrollHeight);
   }, [props.text]);
 
   const refInput = useRef(null);
+
+
 
   const deleteItemHandler = () => {
     props.deleteItem(props.id, props.isActive);
@@ -51,9 +60,13 @@ const Task = (props) => {
   */
 
   return (
-    <li className="task-item">
-      <input type="checkbox" onClick={checkItemHandler} />
-      <input
+    <li className={classes["task-li"]}>
+      <input type="checkbox" onClick={checkItemHandler} className={classes["task-check"]} 
+     checked= {!props.isActive}
+      />
+      <TextareaAutosize
+        className={[classes.task, !props.isActive?classes.done:""].join(" ")}
+      
         ref={refInput}
         type="text"
         value={inputValue}
@@ -61,10 +74,11 @@ const Task = (props) => {
         onChange={taskInputChangeHandler}
         onBlur={endEditItemHandler}
         onKeyDown={endEditWithEnterItemHandler}
-      ></input>
+      ></TextareaAutosize>
 
-      <input type="button" value="Edit" onClick={editItemHandler} />
-      <input type="button" value="Delete" onClick={deleteItemHandler} />
+      <input type="button" value="✎" onClick={editItemHandler} className={classes["task-button"]} />
+      <input type="button" value="X" onClick={deleteItemHandler} className={classes["task-button"]}/>
+        
     </li>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import classes from './NewTask.module.css'
 
 const NewTask = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -12,6 +13,7 @@ const NewTask = (props) => {
       setIsValid(true);
       setEnteredValue(inputValue);
       props.onAddTask(inputValue);
+      setInputValue('');
       return;
     }
     setIsValid(false);
@@ -23,9 +25,9 @@ const NewTask = (props) => {
 
 
   return (
-    <form onSubmit={formSubmitHandler}>
-      <input ref={refInput} type="text" value ={inputValue} onChange = {taskInputChangeHandler}></input>
-      <button type="submit">Add</button>
+    <form onSubmit={formSubmitHandler} className={classes['new-task']}>
+      <input ref={refInput} type="text" className={classes['new-task-text']} value ={inputValue} onChange = {taskInputChangeHandler}></input>
+      <button type="submit" className={classes['new-task-button']}>+</button>
     </form>
   );
 };

@@ -1,0 +1,42 @@
+
+
+html {
+  background-color: #1f1f1f;
+}
+
+.todo-label {
+  color: whitesmoke;
+  text-align: center;
+}
+
+.active-task-label {
+  color: black;
+  text-align: center;
+}
+
+.todo-new {
+  display: flex;
+  
+}
+.card {
+  width: 40rem;
+  max-width: 97%;
+  margin: 0.2rem auto;
+  padding: 0.1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #e4e4e4;
+}
+.todo {
+  width: 40rem;
+  max-width: 90%;
+  margin: 0.5rem auto;
+  padding: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #4c5664;
+}
+
+.task-list {
+  padding: 0.1rem;
+}

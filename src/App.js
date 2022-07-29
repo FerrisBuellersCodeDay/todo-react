@@ -1,17 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NewTask from "./Components/NewTask.js";
 import TasksList from "./Components/TasksList.js";
-import "./App.css";
+import classes from "./App.module.css";
 
-function App() {
-  const [activeTasks, setActiveTasks] = useState([]);
-  const [doneTasks, setDoneTasks] = useState([]);
-  console.log(activeTasks);
-  console.log(doneTasks);
+const App = () => {
+  const activeTasksDefault =
+    JSON.parse(localStorage.getItem("activeTasks")) || [];
+  const doneTasksDefault = JSON.parse(localStorage.getItem("doneTasks")) || [];
+
+  const [activeTasks, setActiveTasks] = useState(activeTasksDefault);
+  const [doneTasks, setDoneTasks] = useState(doneTasksDefault);
+
+  useEffect(() => {
+    localStorage.setItem("activeTasks", JSON.stringify(activeTasks));
+  }, [activeTasks]);
+  useEffect(() => {
+    localStorage.setItem("doneTasks", JSON.stringify(doneTasks));
+  }, [doneTasks]);
 
   let contentActive = (
-    <div>
-      <h2>No active tasks yet</h2>
+    <div >
+      <h2 className={classes["active-task-label"]}>No active tasks yet</h2>
     </div>
   );
   let contentDone;
@@ -22,6 +31,7 @@ function App() {
       updatedTasks.unshift({ id: Date.now(), text: enteredText });
       return updatedTasks;
     });
+    localStorage.setItem("activeTasks", JSON.stringify(activeTasks));
   };
 
   const editItemHandler = (checkedItemId, newTaskValue, isActive) => {
@@ -30,13 +40,13 @@ function App() {
       const updatedTasks = [...prevTasks];
 
       updatedTasks[
-        updatedTasks.findIndex((task) => task.id == checkedItemId)
+        updatedTasks.findIndex((task) => task.id === checkedItemId)
       ].text = newTaskValue;
       return updatedTasks;
     });
   };
 
-  const deleteActiveTaskHandler = (deletedItemId, isActive) => {
+  const deleteTaskHandler = (deletedItemId, isActive) => {
     const setTaskListRef = isActive ? setActiveTasks : setDoneTasks;
     setTaskListRef((prevTasks) => {
       const updatedTasks = [...prevTasks];
@@ -44,11 +54,11 @@ function App() {
     });
   };
 
-  const checkActiveTaskHandler = (checkedItemId, isActive) => {
+  const checkTaskHandler = (checkedItemId, isActive) => {
     const setTaskListRef = isActive ? setDoneTasks : setActiveTasks;
     const setTaskArrayRef = isActive ? activeTasks : doneTasks;
 
-    deleteActiveTaskHandler(checkedItemId, isActive);
+    deleteTaskHandler(checkedItemId, isActive);
 
     setTaskListRef((prevTasks) => {
       const updatedTasks = [...prevTasks];
@@ -58,17 +68,16 @@ function App() {
     });
   };
 
-  
   if (activeTasks.length > 0) {
     contentActive = (
-      <div>
-        <h2>Active Tasks</h2>
-        <TasksList
+      <div >
+        
+        <TasksList className={classes["task-list"]}
           className="active-list"
           isActive={true}
           items={activeTasks}
-          onDeleteItem={deleteActiveTaskHandler}
-          onCheckItem={checkActiveTaskHandler}
+          onDeleteItem={deleteTaskHandler}
+          onCheckItem={checkTaskHandler}
           onEditItem={editItemHandler}
         ></TasksList>
       </div>
@@ -76,14 +85,14 @@ function App() {
   }
   if (doneTasks.length > 0) {
     contentDone = (
-      <div>
-        <h2>Done Tasks</h2>
-        <TasksList
+      <div >
+        
+        <TasksList  className={classes["task-list"]}
           className="done-list"
           isActive={false}
           items={doneTasks}
-          onDeleteItem={deleteActiveTaskHandler}
-          onCheckItem={checkActiveTaskHandler}
+          onDeleteItem={deleteTaskHandler}
+          onCheckItem={checkTaskHandler}
           onEditItem={editItemHandler}
         ></TasksList>
       </div>
@@ -91,13 +100,15 @@ function App() {
   }
 
   return (
-    <div className="todo">
-      <h1>ToDo List</h1>
-      <NewTask className="new-task" onAddTask={addNewTaskHandler} />
+    <div className={classes.todo}>
+      <h1 className={classes["todo-label"]}>ToDo List</h1>
+      <NewTask  className={[classes.card, classes["todo-new"]].join(" ")} onAddTask={addNewTaskHandler} />
+      <div className={classes.card}>
       {contentActive}
       {contentDone}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
