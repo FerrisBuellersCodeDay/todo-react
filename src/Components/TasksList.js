@@ -1,9 +1,10 @@
 import React from "react";
 import Task from "./Task";
+import classes from  "./Task.module.css";
 
 const TasksList = (props) => {
   return (
-    <ul>
+    <ul className={classes["task-ul"]} >
       {props.items.map((task) => (
         <Task
           id= {task.id}

@@ -1,14 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
+
+.task-ul {
+  padding: 0;
+  margin: 1rem 0 1rem 0;
+
+  
+}
 
 .task-li {
-  margin: 0rem;
-  margin-bottom: 0rem;
-  
-  padding: 0.05rem 0.05rem;
-  display: flex;
-  list-style-type: none;
-  position: relative;
+  margin: 0.2rem;
+  padding: 0rem;
+  border-bottom: 0.001rem dashed rgba(78, 77, 77, 0.3);
 
+  padding: 0.05rem 0.05rem;
+  list-style-type: none;
+
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
 .task {
@@ -16,58 +26,71 @@
   background-color: transparent;
   margin-right: 0.5rem;
 
-  width:25rem;
+  width: 25rem;
   resize: none;
+  overflow: hidden;
 
   font-size: 1.3rem;
-  font-family: 'Neucha', cursive;
+  font-family: "Neucha", cursive;
   font-weight: 600;
   line-height: 1.4em;
+}
 
+.task-button {
+  margin: auto;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  display: block;
+  resize: none;
+  height: 2rem;
+  min-width: 2rem;
+  font-size: 1.2rem;
+  border: 2px solid black;
+  border-radius: 5px;
   
+  font-family: "Neucha", cursive;
+  font-weight: 600;
 }
-
-.task-button{
-    margin:auto;
-    margin-left:0.1rem;
-    margin-right:0.1rem;
-    display: block;
-    height:1.5rem;
-    width:1.5rem;
-    font-size: 0.9rem;
-    border: 1px solid black;
-}
-.task-check{
-    margin:auto;
-    margin-left:0.1rem;
-    margin-right:0.5rem;
-    display: block;
-    height:1.5rem;
-    width:1.5rem;
-    border: 1px solid black;
-
-
- 
-}
-.task-check:checked{
-
-
-
+.task-check {
+  margin: auto;
+  margin-left: 0.1rem;
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  display: block;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  border: 1px solid black;
+  resize: none;
   
-    filter: grayscale(100%);
- 
-     
+  font-family: "Neucha", cursive;
+  font-weight: 600;
+}
+.task-check:checked {
+  filter: grayscale(100%);
 }
 .task:focus {
-    outline: none; 
-    
-  }
+  outline: none;
+}
 
 .done {
-    text-decoration: line-through;
+  text-decoration: line-through;
+}
 
+@media (max-width: 600px) {
+  .task {
+    font-size: 1rem;
   }
 
+  .task-button {
+    min-width: 1.5rem;
+    width: 1.5rem;
+    height:1.5rem;
+    font-size: 0.9rem;
+  }
 
-
-  
+  .task-check {
+    min-width: 1.2rem;
+    width: 1.2rem;
+    height:1.2rem;
+  }
+}
