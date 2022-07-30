@@ -1,4 +1,4 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
 
 html {
   background-color: #1f1f1f;
@@ -7,17 +7,18 @@ html {
 .todo-label {
   color: whitesmoke;
   text-align: center;
-  background: linear-gradient(0.25turn, #4c5664 20% , #1f1f1f , #4c5664 80%);
+  background: linear-gradient(0.25turn, #4c5664 20%, #1f1f1f, #4c5664 80%);
 }
 
 .active-task-label {
   color: black;
   text-align: center;
+  font-family: "Neucha", cursive;
+  font-weight: 1000;
 }
 
 .todo-new {
   display: flex;
-  
 }
 .card {
   width: 40rem;
@@ -42,29 +43,20 @@ html {
   padding: 0.1rem;
 }
 
-
 @media (max-width: 600px) {
-
-    html {
-        background-color: #4c5664;
-      }
-   
-    .todo {
-       
-        background-color:transparent;
-        max-width: 100%;
-        margin: 0;
-        border-radius: 0;
-        box-shadow: 0 0 0 0;
-
-      }
-
-
-      .todo-label {
-       
-        background: linear-gradient(0.25turn, #4c5664 , #1f1f1f , #4c5664 );
-      }
-
-     
-
+  html {
+    background-color: #4c5664;
   }
+
+  .todo {
+    background-color: transparent;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0 0 0 0;
+  }
+
+  .todo-label {
+    background: linear-gradient(0.25turn, #4c5664, #1f1f1f, #4c5664);
+  }
+}
